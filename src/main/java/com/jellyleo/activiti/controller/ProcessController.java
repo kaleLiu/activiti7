@@ -213,7 +213,7 @@ public class ProcessController extends BaseController {
 				CommonVariable variablesEntity = JSON.parseObject(variable, CommonVariable.class);
 				variables = BeanUtil.beanToMap(variablesEntity);
 			}
-
+			variables.put("user1","zhangsan");
 			ProcessInstance instance = runtimeService.startProcessInstanceByKey(processDefinitionKey, variables);
 //			// Businesskey:业务标识，通常为业务表的主键，业务标识和流程实例一一对应。业务标识来源于业务系统。存储业务标识就是根据业务标识来关联查询业务系统的数据
 //			ProcessInstance instance = runtimeService.startProcessInstanceByKey(processDefinitionKey, businessKey,
@@ -392,4 +392,8 @@ public class ProcessController extends BaseController {
 		return "success";
 	}
 
+	public static void main(String[] args) {
+		CommonVariable commonVariable = JSON.parseObject("{\"amount\":2}", CommonVariable.class);
+		System.out.printf(""+commonVariable);
+	}
 }
